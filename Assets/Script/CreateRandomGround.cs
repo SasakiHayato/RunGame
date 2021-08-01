@@ -11,6 +11,8 @@ public class CreateRandomGround : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.Cureated()) return;
+
         m_timer += Time.deltaTime;
 
         if (m_timer > 1.5f)

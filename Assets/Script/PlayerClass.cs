@@ -17,6 +17,8 @@ public class PlayerClass : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.Cureated()) return;
+
         Move();
 
         if (Input.GetButtonDown("Jump"))
@@ -42,7 +44,7 @@ public class PlayerClass : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Field"))
         {
-            Debug.Log("Dead");
+            GameManager.Instance.EndPlay();
         }
     }
 }

@@ -9,6 +9,8 @@ public class ScrollGroundClass : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.Cureated()) return;
+
         transform.Translate(m_speed * Time.deltaTime, 0 ,0);
     }
 }

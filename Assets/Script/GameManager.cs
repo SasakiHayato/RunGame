@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private static bool m_cureated = false;
 
     private static bool m_isPlay = false;
+    [SerializeField] UiClass m_ui = null;
 
     public void IsPlay()
     {
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public void EndPlay()
     {
+        m_ui = FindObjectOfType<UiClass>();
+        m_ui.SetRezult();
         m_isPlay = false;
     }
 

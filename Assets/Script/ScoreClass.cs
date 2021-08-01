@@ -9,6 +9,7 @@ public class ScoreClass : MonoBehaviour
     private float m_score = 0;
 
     private UiClass m_ui;
+
     void Start()
     {
         m_ui = FindObjectOfType<UiClass>();
@@ -17,8 +18,8 @@ public class ScoreClass : MonoBehaviour
     void Update()
     {
         if (!GameManager.Instance.Cureated()) return;
-        
-        m_score += Time.deltaTime;
+
+        m_score = GameManager.Instance.Timer();
         m_scoreText.text = (m_score * 1000).ToString("Score: " + "00000000");
 
         m_ui.m_rezultScore = m_score * 1000;

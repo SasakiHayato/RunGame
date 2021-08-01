@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
     private static bool m_cureated = false;
 
     private static bool m_isPlay = false;
-    [SerializeField] UiClass m_ui = null;
+    [SerializeField] private UiClass m_ui = null;
+
+    private static float m_timer;
 
     public void IsPlay()
     {
         m_isPlay = true;
+        m_timer = 0;
         SceneManager.LoadScene("Game");
     }
 
@@ -32,6 +35,12 @@ public class GameManager : MonoBehaviour
     public void OnLoadTitle()
     {
         SceneManager.LoadScene("Title");
+    }
+
+    public float Timer()
+    {
+        m_timer += Time.deltaTime;
+        return m_timer;
     }
 
     private void Awake()

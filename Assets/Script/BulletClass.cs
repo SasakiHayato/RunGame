@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class BulletClass : MonoBehaviour
 {
-    private float m_desTime = 0;
     private float m_angleSin = 0;
 
     private bool m_shotCheck = false;
     
     private Vector2 vector = Vector2.zero;
-    private Rigidbody2D m_rigidbody;
 
+    private Rigidbody2D m_rigidbody;
     private PlayerManager m_player;
 
     void Start()
@@ -32,22 +31,6 @@ public class BulletClass : MonoBehaviour
 
             Vector2 angleVec = SetAngle(m_angleSin) * 15;
             Shot(angleVec);
-        }
-
-        if (!m_shotCheck) return;
-        DesBullet();
-    }
-
-    private void DesBullet()
-    {
-        m_desTime += Time.deltaTime;
-        if (m_desTime > 2)
-        {
-            Destroy(this.gameObject);
-            m_desTime = 0;
-
-            m_shotCheck = false;
-            m_player.m_isBullet = false;
         }
     }
 
@@ -77,5 +60,34 @@ public class BulletClass : MonoBehaviour
         }
 
         m_rigidbody = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    private void DesBullet()
+    {
+        Destroy(this.gameObject);
+
+        m_shotCheck = false;
+        m_player.m_isBullet = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Field"))
+        {
+            DesBullet();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            
+            ScoreClass score = FindObjectOfType<ScoreClass>();
+            score.ScoreUp();
+
+            DesBullet();
+            Destroy(collision.gameObject);
+        }
     }
 }

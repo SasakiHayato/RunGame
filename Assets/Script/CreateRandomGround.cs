@@ -8,12 +8,21 @@ public class CreateRandomGround : MonoBehaviour
     [SerializeField] private GameObject[] m_ground;
 
     private float m_timer = 0;
+    private float m_gameTime = 0;
+    private float m_speedUpCount = 10;
+
+    ScrollGroundClass m_groundClass;
+
+    void Start()
+    {
+        m_groundClass = FindObjectOfType<ScrollGroundClass>();
+    }
 
     void Update()
     {
         if (!GameManager.Instance.Cureated()) return;
 
-        m_timer += Time.deltaTime;
+        m_timer += GameManager.Instance.Timer();
 
         if (m_timer > 1.5f)
         {
@@ -24,6 +33,8 @@ public class CreateRandomGround : MonoBehaviour
 
             m_timer = 0;
         }
+
+        ScrollSpeed();
     }
 
     private Transform SelectPos()
@@ -37,5 +48,16 @@ public class CreateRandomGround : MonoBehaviour
     {
         int random = Random.Range(0, m_ground.Length);
         return m_ground[random];
+    }
+
+    private void ScrollSpeed()
+    {
+        m_gameTime += Time.deltaTime;
+        
+        if (m_gameTime >= m_speedUpCount)
+        {
+            m_groundClass.SpeedUp();
+            m_speedUpCount += 10;
+        }
     }
 }

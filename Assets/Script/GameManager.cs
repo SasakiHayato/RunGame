@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     public float Timer()
     {
-        m_timer += Time.deltaTime;
+        m_timer = Time.deltaTime;
         return m_timer;
     }
 

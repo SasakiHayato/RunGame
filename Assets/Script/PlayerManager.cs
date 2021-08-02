@@ -9,6 +9,14 @@ public class PlayerManager : MonoBehaviour
 
     public bool m_isBullet { get; set; }
 
+    public void SetBullet()
+    {
+        m_isBullet = true;
+
+        GameObject bullet = Instantiate(m_bullet);
+        bullet.transform.position = this.transform.position;
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Field"))
@@ -17,11 +25,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void SetBullet()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        m_isBullet = true;
-
-        GameObject bullet = Instantiate(m_bullet);
-        bullet.transform.position = this.transform.position;
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

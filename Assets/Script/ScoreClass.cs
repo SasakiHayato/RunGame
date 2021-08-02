@@ -17,11 +17,22 @@ public class ScoreClass : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.Cureated()) return;
+        if (!GameManager.Instance.Cureated()) return; 
+        m_score += GameManager.Instance.Timer() * 100;
 
-        m_score = GameManager.Instance.Timer();
-        m_scoreText.text = (m_score * 1000).ToString("Score: " + "00000000");
+        SetScore(m_score);
+    }
 
-        m_ui.m_rezultScore = m_score * 1000;
+    public void ScoreUp()
+    {
+        m_score += 3000;
+        SetScore(m_score);
+    }
+
+    private void SetScore(float score)
+    {
+        m_scoreText.text = score.ToString("Score: " + "00000000");
+
+        m_ui.m_rezultScore = score;
     }
 }

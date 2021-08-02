@@ -26,6 +26,7 @@ public class PlayerClass : PlayerManager
 
         if (Input.GetButtonDown("Fire1"))
         {
+            if (m_isBullet) return;
             SetBullet();
         }
     }

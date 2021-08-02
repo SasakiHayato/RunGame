@@ -8,9 +8,16 @@ public class BulletClass : MonoBehaviour
     private float m_angleSin = 0;
 
     private bool m_shotCheck = false;
-
+    
     private Vector2 vector = Vector2.zero;
-    public Rigidbody2D m_rigidbody { get; set; }
+    private Rigidbody2D m_rigidbody;
+
+    private PlayerManager m_player;
+
+    void Start()
+    {
+        m_player = FindObjectOfType<PlayerManager>();
+    }
 
     void Update()
     {
@@ -21,12 +28,18 @@ public class BulletClass : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
+            if (m_shotCheck) return;
+
             Vector2 angleVec = SetAngle(m_angleSin) * 15;
             Shot(angleVec);
         }
 
         if (!m_shotCheck) return;
+        DesBullet();
+    }
 
+    private void DesBullet()
+    {
         m_desTime += Time.deltaTime;
         if (m_desTime > 2)
         {
@@ -34,6 +47,7 @@ public class BulletClass : MonoBehaviour
             m_desTime = 0;
 
             m_shotCheck = false;
+            m_player.m_isBullet = false;
         }
     }
 
@@ -55,7 +69,7 @@ public class BulletClass : MonoBehaviour
         return vector;
     }
 
-    public void AddRb2D()
+    private void AddRb2D()
     {
         if (m_rigidbody == null)
         {

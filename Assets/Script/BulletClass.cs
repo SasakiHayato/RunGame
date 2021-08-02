@@ -12,10 +12,14 @@ public class BulletClass : MonoBehaviour
 
     private Rigidbody2D m_rigidbody;
     private PlayerManager m_player;
+    private LineRenderer m_line;
 
     void Start()
     {
         m_player = FindObjectOfType<PlayerManager>();
+        AddLineRenderer();
+
+        SetLine();
     }
 
     void Update()
@@ -23,6 +27,8 @@ public class BulletClass : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             m_angleSin += Time.deltaTime;
+            Vector2 angleVec = SetAngle(m_angleSin);
+            m_line.SetPosition(1, new Vector3 (angleVec.x, angleVec.y, 1));
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -52,6 +58,14 @@ public class BulletClass : MonoBehaviour
         return vector;
     }
 
+    private void SetLine()
+    {
+        m_line.startWidth = 1f;
+        m_line.endWidth = 1f;
+
+        m_line.SetPosition(0, new Vector3(transform.position.x, transform.position.y, 1));
+    }
+
     private void AddRb2D()
     {
         if (m_rigidbody == null)
@@ -60,6 +74,16 @@ public class BulletClass : MonoBehaviour
         }
 
         m_rigidbody = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    private void AddLineRenderer()
+    {
+        if (m_line == null)
+        {
+            m_line = this.gameObject.AddComponent<LineRenderer>();
+        }
+
+        m_line = gameObject.GetComponent<LineRenderer>();
     }
 
     private void DesBullet()

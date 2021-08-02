@@ -6,19 +6,19 @@ using UnityEngine;
 public class ScrollGroundClass : MonoBehaviour
 {
     private float m_speed = -5f;
-    private float m_time = 0;
-    private float m_up = 10;
+
+    private float m_desTime = 0;
 
     void Update()
     {
         if (!GameManager.Instance.Cureated()) return;
-        //m_time += Time.deltaTime;
-        //if (m_time > m_up)
-        //{
-        //    m_speed -= 0.04f;
-        //    m_up += 10;
-        //    Debug.Log(m_speed);
-        //}
+        m_desTime += Time.deltaTime;
         transform.Translate(m_speed * Time.deltaTime, 0 ,0);
+
+        if (m_desTime > 4)
+        {
+            Destroy(this.gameObject);
+            m_desTime = 0;
+        }
     }
 }

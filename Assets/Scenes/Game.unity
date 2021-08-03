@@ -1176,6 +1176,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1838254315107356648, guid: 7cf89f858334dc247aa6251ea8627e9a,
+        type: 3}
+      propertyPath: m_bullet
+      value: 
+      objectReference: {fileID: 7511332720471632666, guid: a45e978d65365014c913258145b51fb4,
+        type: 3}
+    - target: {fileID: 1838254315107356663, guid: 7cf89f858334dc247aa6251ea8627e9a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8278659215762441172, guid: 7cf89f858334dc247aa6251ea8627e9a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1349,6 +1360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5262581952537837765, guid: bc48e5513db10b94ab1e6ef7d2373658,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5262581952537837790, guid: bc48e5513db10b94ab1e6ef7d2373658,
         type: 3}

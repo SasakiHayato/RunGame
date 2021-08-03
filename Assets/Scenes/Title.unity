@@ -709,7 +709,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u8D70\u308C\uFF01 HOUSE\uFF01(\u4EEE)"
+  m_Text: "\u8D70\u308C  HOUSE"
 --- !u!222 &1323962519
 CanvasRenderer:
   m_ObjectHideFlags: 0

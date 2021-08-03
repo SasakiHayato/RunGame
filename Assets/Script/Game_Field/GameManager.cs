@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     {
         m_isPlay = true;
         m_timer = 0;
-        SceneManager.LoadScene("Game");
     }
 
     public bool Cureated()
@@ -35,6 +34,11 @@ public class GameManager : MonoBehaviour
     public void OnLoadTitle()
     {
         SceneManager.LoadScene("Title");
+    }
+
+    public void OnLoadGame()
+    {
+        SceneManager.LoadScene("Game");
     }
 
     public float Timer()

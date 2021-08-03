@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreateRandomObstacle : MonoBehaviour
 {
     [SerializeField] private Transform[] m_pos;
-    [SerializeField] private GameObject m_obstacle;
+    [SerializeField] private GameObject[] m_obstacle;
 
     private float m_timer = 0;
 
@@ -18,7 +18,8 @@ public class CreateRandomObstacle : MonoBehaviour
         if (m_timer > 3)
         {
             Transform pos = SelectPos();
-            Instantiate(m_obstacle, pos);
+            int random = Random.Range(0, m_obstacle.Length);
+            Instantiate(m_obstacle[random], pos);
 
             m_timer = 0;
         }

@@ -26,5 +26,4 @@ public class UiClass : MonoBehaviour
         m_rezult.SetActive(true);
         m_scoreText.text = m_rezultScore.ToString("Score: " + "00000000");
     }
-
 }

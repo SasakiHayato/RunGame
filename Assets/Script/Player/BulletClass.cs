@@ -30,7 +30,7 @@ public class BulletClass : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            transform.position = new Vector2(m_playerPos.position.x, m_playerPos.position.y + 1);
+            transform.position = new Vector2(m_playerPos.position.x - 0.8f, m_playerPos.position.y + 0.5f);
 
             m_angleSin += Time.deltaTime;
 
@@ -43,7 +43,7 @@ public class BulletClass : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             if (m_shotCheck) return;
-
+            Destroy(m_line);
             Vector2 angleVec = SetAngle(m_angleSin) * 15;
             Shot(angleVec);
         }

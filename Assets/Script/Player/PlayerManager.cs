@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject m_bullet = null;
     public Rigidbody2D m_rigidbody { get; set; }
+    public Animator m_animator { get; set; }
 
     public bool m_isBullet { get; set; }
 

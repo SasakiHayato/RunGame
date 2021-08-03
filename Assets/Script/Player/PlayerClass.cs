@@ -11,6 +11,7 @@ public class PlayerClass : PlayerManager
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
+        m_animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -29,6 +30,14 @@ public class PlayerClass : PlayerManager
         {
             if (m_isBullet) return;
             SetBullet();
+        }
+        if (Input.GetButton("Fire1"))
+        {
+            m_animator.Play("HouseShotReady");
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            m_animator.Play("HouseShot");
         }
     }
 

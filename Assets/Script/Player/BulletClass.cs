@@ -15,11 +15,14 @@ public class BulletClass : MonoBehaviour
     private PlayerManager m_player;
     private LineRenderer m_line;
 
+    private Transform m_playerPos;
+
     void Start()
     {
         m_player = FindObjectOfType<PlayerManager>();
+        m_playerPos = GameObject.Find("Player").transform;
+
         AddLineRenderer();
-        m_bulletVec = transform.position;
         SetLine();
     }
 
@@ -27,15 +30,14 @@ public class BulletClass : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
+            transform.position = new Vector2(m_playerPos.position.x, m_playerPos.position.y + 1);
+
             m_angleSin += Time.deltaTime;
 
             float angle = Mathf.Sin(m_angleSin) * (180 / Mathf.PI);
             float rad = angle * Mathf.Deg2Rad;
 
-            float sin = Mathf.Sin(rad);
-            float cos = Mathf.Cos(rad);
-
-            m_line.SetPosition(1, new Vector3(cos + m_bulletVec.x, sin + m_bulletVec.y, 0));
+            DrawLine(rad);            
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -50,9 +52,9 @@ public class BulletClass : MonoBehaviour
     private void Shot(Vector2 force)
     {
         AddRb2D();
-        m_rigidbody.gravityScale = 0;
 
         m_rigidbody.AddForce(force, ForceMode2D.Impulse);
+        
         m_shotCheck = true;
     }
 
@@ -73,8 +75,17 @@ public class BulletClass : MonoBehaviour
 
         m_line.startColor = Color.white;
         m_line.endColor = Color.white;
+    }
+
+    private void DrawLine(float rad)
+    {
+        m_bulletVec = transform.position;
+
+        float sin = Mathf.Sin(rad);
+        float cos = Mathf.Cos(rad);
 
         m_line.SetPosition(0, new Vector3(transform.position.x, transform.position.y, 0));
+        m_line.SetPosition(1, new Vector3(cos + m_bulletVec.x, sin + m_bulletVec.y, 0));
     }
 
     private void AddRb2D()
@@ -117,7 +128,6 @@ public class BulletClass : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            
             ScoreClass score = FindObjectOfType<ScoreClass>();
             score.ScoreUp();
 

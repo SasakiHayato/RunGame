@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         m_isBullet = true;
 
         GameObject bullet = Instantiate(m_bullet);
-        bullet.transform.position = this.transform.position;
+        bullet.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

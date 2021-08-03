@@ -18,7 +18,8 @@ public class PlayerClass : PlayerManager
         //if (!GameManager.Instance.Cureated()) return;
 
         Move();
-        
+        GroundCheck();
+
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
@@ -41,6 +42,8 @@ public class PlayerClass : PlayerManager
 
     private void Jump()
     {
+        if (m_cureatedJumpCount == 0) return;
         m_rigidbody.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
+        m_cureatedJumpCount--;
     }
 }

@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class SpriteScrollClass : MonoBehaviour
 {
+    private enum ScrollEnum
+    {
+        Front,
+        Back,
+    }
+    [SerializeField] private ScrollEnum m_scrollEnum;
+
     [SerializeField] SpriteRenderer m_sprite;
     private SpriteRenderer m_clone;
 
@@ -21,8 +28,14 @@ public class SpriteScrollClass : MonoBehaviour
 
     void Update()
     {
-        m_sprite.transform.Translate(-m_scrollSpeed * Time.deltaTime, 0, 0);
-        m_clone.transform.Translate(-m_scrollSpeed * Time.deltaTime, 0, 0);
+        if (m_scrollEnum == ScrollEnum.Front)
+        {
+            FrontScroll();
+        }
+        else if (m_scrollEnum == ScrollEnum.Back)
+        {
+            BackScroll();
+        }
 
         if (m_xPos - m_sprite.transform.position.x >  m_sprite.bounds.size.x)
         {
@@ -32,5 +45,17 @@ public class SpriteScrollClass : MonoBehaviour
         {
             m_clone.transform.Translate(m_clone.bounds.size.x * 2, 0, 0);
         }
+    }
+
+    private void FrontScroll()
+    {
+        m_sprite.transform.Translate(-m_scrollSpeed * Time.deltaTime, 0, 0);
+        m_clone.transform.Translate(-m_scrollSpeed * Time.deltaTime, 0, 0);
+    }
+
+    private void BackScroll()
+    {
+        m_sprite.transform.Translate((-m_scrollSpeed / 4) * Time.deltaTime, 0, 0);
+        m_clone.transform.Translate((-m_scrollSpeed / 4) * Time.deltaTime, 0, 0);
     }
 }

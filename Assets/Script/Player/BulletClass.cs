@@ -83,8 +83,8 @@ public class BulletClass : MonoBehaviour
         float sin = Mathf.Sin(rad);
         float cos = Mathf.Cos(rad);
 
-        m_line.SetPosition(0, new Vector3(transform.position.x, transform.position.y, 0));
-        m_line.SetPosition(1, new Vector3(cos + m_bulletVec.x, sin + m_bulletVec.y, 0));
+        m_line.SetPosition(0, new Vector3(transform.position.x, transform.position.y, m_playerPos.position.z));
+        m_line.SetPosition(1, new Vector3(cos + m_bulletVec.x, sin + m_bulletVec.y, m_playerPos.position.z));
     }
 
     private void AddRb2D()

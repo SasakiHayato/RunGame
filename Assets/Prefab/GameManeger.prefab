@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ui: {fileID: 5262581952537837790, guid: bc48e5513db10b94ab1e6ef7d2373658, type: 3}
+  m_audio: {fileID: 8279479716561961373, guid: 9d80d617707e2ce40a4f0287a20c4f7b, type: 3}

@@ -34,13 +34,22 @@ public class StratCountClass : MonoBehaviour
     private void SetCount(float time)
     {
         if (time > 3) return;
-        m_timeText.text = time.ToString("0");
-
-        if (time <= 0)
+        
+        if ((int)time == 0)
         {
-            m_active = false;
-            GameManager.Instance.IsPlay();
-            Destroy(this.gameObject);
+            m_timeText.text = "Go!!";
+
+            if (time < 0)
+            {
+                m_active = false;
+
+                GameManager.Instance.IsPlay();
+                Destroy(this.gameObject);
+            }
+        }
+        else
+        {
+            m_timeText.text = time.ToString("0");
         }
     }
 }

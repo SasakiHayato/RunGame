@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour
 
     private static bool m_isPlay = false;
     [SerializeField] private UiClass m_ui = null;
+    [SerializeField] private AudioClass m_audio = null;
 
     private static float m_timer;
 
     public void IsPlay()
     {
         m_isPlay = true;
+        m_audio = FindObjectOfType<AudioClass>();
+        m_audio.Game();
         m_timer = 0;
     }
 

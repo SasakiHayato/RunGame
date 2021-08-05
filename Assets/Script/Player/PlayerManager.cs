@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject m_bullet = null;
+    [SerializeField] public GameObject m_shieldPrefab = null;
+
     public Rigidbody2D m_rigidbody { get; set; }
     public Animator m_animator { get; set; }
 
     public bool m_isBullet { get; set; }
+    public bool m_isShield { get; set; }
 
     [SerializeField] private int m_maxJumpCount = 0;
     public int m_cureatedJumpCount { get; set; }
@@ -23,7 +26,6 @@ public class PlayerManager : MonoBehaviour
         {
             m_cureatedJumpCount = m_maxJumpCount;
         }
-        
     }
 
     public void SetBullet()
@@ -32,6 +34,18 @@ public class PlayerManager : MonoBehaviour
 
         GameObject bullet = Instantiate(m_bullet);
         bullet.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+
+        float rotateZ = Random.Range(0, 360);
+
+        bullet.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, rotateZ);
+    }
+
+    public void SetShield()
+    {
+        m_isShield = true;
+
+        GameObject shield = Instantiate(m_shieldPrefab);
+        shield.transform.position = transform.position;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

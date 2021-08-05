@@ -16,7 +16,7 @@ public class PlayerClass : PlayerManager
 
     void Update()
     {
-        if (!GameManager.Instance.Cureated()) return;
+        //if (!GameManager.Instance.Cureated()) return;
 
         Move();
         GroundCheck();
@@ -39,6 +39,11 @@ public class PlayerClass : PlayerManager
         {
             m_animator.Play("HouseShot");
         }
+
+        if (Input.GetButtonDown("Fire2") && !m_isShield)
+        {
+            SetShield();
+        }
     }
 
     private void Move()
@@ -52,6 +57,7 @@ public class PlayerClass : PlayerManager
     private void Jump()
     {
         if (m_cureatedJumpCount == 0) return;
+        
         m_rigidbody.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
         m_cureatedJumpCount--;
     }

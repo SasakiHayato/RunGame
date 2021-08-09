@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543886078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -4.5, z: 0}
+  m_LocalPosition: {x: 10, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1315416873}
@@ -492,7 +492,7 @@ Transform:
   m_GameObject: {fileID: 750773911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.5, z: -6}
-  m_LocalScale: {x: 17.55, y: 1, z: 1}
+  m_LocalScale: {x: 23, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1435494182}
   m_RootOrder: 0
@@ -545,6 +545,49 @@ Transform:
   m_Father: {fileID: 2104405707}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &826605921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5634083897328454019, guid: b95b299fde796ea4180416c6844fe3ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 5634083897947482392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &826605925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826605921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1979567194969741bf59f0d3964fa7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_event:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4947713988352658259}
+        m_MethodName: SetActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1275296595}
+        m_MethodName: OnClickAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1058153305
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,7 +675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226542430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: 10, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1315416873}
@@ -740,6 +783,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7735960926397369960, guid: f00dd20c1ec367c45b10b0595cd81f4f,
         type: 3}
+    - target: {fileID: 1838254315107356663, guid: 7cf89f858334dc247aa6251ea8627e9a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8278659215762441172, guid: 7cf89f858334dc247aa6251ea8627e9a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1048,6 +1096,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1979567194969741bf59f0d3964fa7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_event:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8946715045904552341, guid: dd98d4a0d542fd848aa96ac821dc289d,
+          type: 3}
+        m_MethodName: OnLoadGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8946715045904552341, guid: dd98d4a0d542fd848aa96ac821dc289d,
+          type: 3}
+        m_MethodName: OnLoadTitle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1435494181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761795609}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: 10, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1315416873}
@@ -1988,8 +2065,8 @@ PrefabInstance:
     - target: {fileID: 5634083897103982395, guid: b95b299fde796ea4180416c6844fe3ec,
         type: 3}
       propertyPath: m_Text
-      value: "A => \u53F3\nD => \u5DE6\nSpace => \u30B8\u30E3\u30F3\u30D7\nLClick
-        => \u6295\u3052\u308B"
+      value: "LStick => \u5DE6\u53F3\u306E\u79FB\u52D5\nX  => \u30B8\u30E3\u30F3\u30D7\nL1
+        => \u6295\u3052\u308B\n\u25A1 => \u30B7\u30FC\u30EB\u30C9"
       objectReference: {fileID: 0}
     - target: {fileID: 5634083897103982395, guid: b95b299fde796ea4180416c6844fe3ec,
         type: 3}
@@ -2165,6 +2242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnClickAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634083897667191474, guid: b95b299fde796ea4180416c6844fe3ec,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5634083897667191474, guid: b95b299fde796ea4180416c6844fe3ec,
         type: 3}

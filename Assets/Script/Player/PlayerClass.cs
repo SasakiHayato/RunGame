@@ -8,15 +8,18 @@ public class PlayerClass : PlayerManager
     [SerializeField] private float m_speed = 0;
     [SerializeField] private float m_jumpPower = 0;
 
+    private BulletClass m_bullet;
     void Start()
     {
+        m_bullet = FindObjectOfType<BulletClass>();
+
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        //if (!GameManager.Instance.Cureated()) return;
+        if (!GameManager.Instance.Cureated()) return;
 
         Move();
         GroundCheck();

@@ -28,6 +28,7 @@ public class BulletClass : MonoBehaviour
 
     void Update()
     {
+        if (m_shotCheck) return;
         if (Input.GetButton("JoystickShot"))
         {
             transform.position = new Vector2(m_playerPos.position.x - 0.8f, m_playerPos.position.y + 0.5f);
@@ -41,7 +42,7 @@ public class BulletClass : MonoBehaviour
 
         if (Input.GetButtonUp("JoystickShot"))
         {
-            if (m_shotCheck) return;
+            
             
             Vector2 angleVec = SetAngle(m_angleSin) * 15;
             Shot(angleVec);

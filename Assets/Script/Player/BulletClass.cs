@@ -28,7 +28,7 @@ public class BulletClass : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("JoystickShot"))
         {
             transform.position = new Vector2(m_playerPos.position.x - 0.8f, m_playerPos.position.y + 0.5f);
             m_angleSin += Time.deltaTime;
@@ -36,10 +36,10 @@ public class BulletClass : MonoBehaviour
             float angle = Mathf.Sin(m_angleSin) * (180 / Mathf.PI);
             float rad = angle * Mathf.Deg2Rad;
 
-            DrawLine(rad);            
+            DrawLine(rad);
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("JoystickShot"))
         {
             if (m_shotCheck) return;
             
@@ -109,10 +109,10 @@ public class BulletClass : MonoBehaviour
 
     private void DesBullet()
     {
-        Destroy(this.gameObject);
-
         m_shotCheck = false;
         m_player.m_isBullet = false;
+
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

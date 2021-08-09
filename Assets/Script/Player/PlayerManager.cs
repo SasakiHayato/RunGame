@@ -36,7 +36,6 @@ public class PlayerManager : MonoBehaviour
         bullet.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
 
         float rotateZ = Random.Range(0, 360);
-
         bullet.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, rotateZ);
     }
 

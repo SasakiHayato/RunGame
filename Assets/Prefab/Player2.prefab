@@ -199,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bullet: {fileID: 7511332720471632666, guid: a8fe4061820d5c543b0ef1a721a18937,
     type: 3}
+  m_shieldPrefab: {fileID: 0}
   m_maxJumpCount: 1
   m_groundRay: {x: 0, y: -1.8}
   m_layer:

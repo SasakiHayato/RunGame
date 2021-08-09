@@ -21,26 +21,29 @@ public class PlayerClass : PlayerManager
         Move();
         GroundCheck();
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("JoystickJump") )
         {
             Jump();
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (!m_isBullet)
         {
-            if (m_isBullet) return;
-            SetBullet();
+            if (Input.GetButtonDown("JoystickShot"))
+            {
+                SetBullet();
+            }
         }
-        if (Input.GetButton("Fire1"))
+        
+        if (Input.GetButton("JoystickShot"))
         {
             m_animator.Play("HouseShotReady");
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("JoystickShot"))
         {
             m_animator.Play("HouseShot");
         }
 
-        if (Input.GetButtonDown("Fire2") && !m_isShield)
+        if (Input.GetButtonDown("JoystickShield") && !m_isShield)
         {
             SetShield();
         }

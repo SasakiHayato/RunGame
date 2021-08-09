@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Vector2 m_groundRay = Vector2.zero;
     [SerializeField] LayerMask m_layer = 0;
 
+    [SerializeField] public ShieldMeterClass m_shieldmeter;
+
     public void GroundCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, m_groundRay, m_groundRay.magnitude, m_layer);

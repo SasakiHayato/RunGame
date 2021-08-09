@@ -8,18 +8,15 @@ public class PlayerClass : PlayerManager
     [SerializeField] private float m_speed = 0;
     [SerializeField] private float m_jumpPower = 0;
 
-    private BulletClass m_bullet;
     void Start()
     {
-        m_bullet = FindObjectOfType<BulletClass>();
-
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if (!GameManager.Instance.Cureated()) return;
+        //if (!GameManager.Instance.Cureated()) return;
 
         Move();
         GroundCheck();
@@ -28,7 +25,7 @@ public class PlayerClass : PlayerManager
         {
             Jump();
         }
-
+        
         if (!m_isBullet)
         {
             if (Input.GetButtonDown("JoystickShot"))
@@ -46,9 +43,11 @@ public class PlayerClass : PlayerManager
             m_animator.Play("HouseShot");
         }
 
-        if (Input.GetButtonDown("JoystickShield") && !m_isShield)
+        if (Input.GetButtonDown("JoystickShield") && !m_isShield && m_shieldmeter.m_setShield)
         {
             SetShield();
+            m_shieldmeter.m_setShield = false;
+            m_shieldmeter.ResetMeterImage();
         }
     }
 
@@ -56,8 +55,18 @@ public class PlayerClass : PlayerManager
     {
         float h = Input.GetAxisRaw("Horizontal");
         if (h < 0) { h = h / 2; }
+        if (h < 0) 
+        { 
+            m_shieldmeter.m_meterTime += Time.deltaTime;
+            if (m_shieldmeter.m_meterTime > 2)
+            {
+                m_shieldmeter.SetMeterImage();
+                m_shieldmeter.m_meterTime = 0;
+            }
+        }
 
         m_rigidbody.velocity = new Vector2(m_speed * h, m_rigidbody.velocity.y);
+        Debug.Log(m_shieldmeter.m_meterTime);
     }
 
     private void Jump()

@@ -16,34 +16,34 @@ public class PlayerClass : PlayerManager
 
     void Update()
     {
-        //if (!GameManager.Instance.Cureated()) return;
+        if (!GameManager.Instance.Cureated()) return;
 
         Move();
         GroundCheck();
 
-        if (Input.GetButtonDown("JoystickJump") )
+        if (Input.GetButtonDown("JoystickJump") || Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
         
         if (!m_isBullet)
         {
-            if (Input.GetButtonDown("JoystickShot"))
+            if (Input.GetButtonDown("JoystickShot") || Input.GetMouseButtonDown(0))
             {
                 SetBullet();
             }
         }
         
-        if (Input.GetButton("JoystickShot"))
+        if (Input.GetButton("JoystickShot") || Input.GetMouseButton(0))
         {
             m_animator.Play("HouseShotReady");
         }
-        if (Input.GetButtonUp("JoystickShot"))
+        if (Input.GetButtonUp("JoystickShot") || Input.GetMouseButtonUp(0))
         {
             m_animator.Play("HouseShot");
         }
 
-        if (Input.GetButtonDown("JoystickShield") && !m_isShield && m_shieldmeter.m_setShield)
+        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("JoystickShield") && !m_isShield && m_shieldmeter.m_setShield)
         {
             SetShield();
             m_shieldmeter.m_setShield = false;

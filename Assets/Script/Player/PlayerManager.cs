@@ -54,6 +54,7 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Field"))
         {
             GameManager.Instance.EndPlay();
+            GameManager.Instance.DiedPlayer();
             Destroy(gameObject);
         }
     }

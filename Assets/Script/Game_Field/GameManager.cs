@@ -62,4 +62,11 @@ public class GameManager : MonoBehaviour
             Destroy(Instance);
         }
     }
+
+    public void DiedPlayer()
+    {
+        RankingManager ranking = FindObjectOfType<RankingManager>();
+        float result = m_ui.m_rezultScore;
+        ranking.SetUp(result);
+    }
 }

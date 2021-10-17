@@ -15,10 +15,10 @@ public class RankingManager : MonoBehaviour
         GetRanking(score);
     }
 
-    void GetRanking(float score)
+    public void GetRanking(float score)
     {
         m_getScore = score;
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("High Score");
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
         query.OrderByDescending("Score");
         query.Limit = 5;
 
@@ -29,11 +29,12 @@ public class RankingManager : MonoBehaviour
             else
             {
                 m_ncmbList = list;
-                if (m_ncmbList.Count < 5)
+                if (m_ncmbList.Count < 5 || score != 0)
                 {
                     Debug.Log("ランクイン");
+                    Save(m_getScore);
                 }
-                Save(m_getScore);
+                
                 SetCanvas();
             }
         });
@@ -42,15 +43,16 @@ public class RankingManager : MonoBehaviour
     void SetCanvas()
     {
         System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        for (int i = 1; i <= m_ncmbList.Count; i++)
+        for (int i = 0; i < m_ncmbList.Count; i++)
         {
-            builder.Append(i.ToString());
+            builder.Append((i + 1).ToString());
             builder.Append(" : ");
             builder.Append(m_ncmbList[i]["Name"].ToString());
             builder.Append(" : ");
             builder.Append(m_ncmbList[i]["Score"].ToString());
+            builder.Append("\n");
         }
-
+        Debug.Log("Ranking Text:\r\n" + builder.ToString());
         m_setText.text = builder.ToString();
     }
 

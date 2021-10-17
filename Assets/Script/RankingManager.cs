@@ -65,7 +65,7 @@ public class RankingManager : MonoBehaviour
     public void Save()
     {
         NCMBObject ncmb = new NCMBObject("HighScore");
-        ncmb["Name"] = m_name;
+        ncmb["Name"] = m_name.text;
         ncmb["Score"] = m_getScore;
 
         ncmb.SaveAsync((NCMBException e) =>
@@ -79,6 +79,7 @@ public class RankingManager : MonoBehaviour
                 Debug.Log("a");
                 m_name.gameObject.SetActive(false);
                 m_entryButton.SetActive(false);
+                GetRanking(0);
             }
         });
 

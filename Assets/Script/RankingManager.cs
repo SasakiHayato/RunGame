@@ -7,11 +7,15 @@ using NCMB;
 public class RankingManager : MonoBehaviour
 {
     [SerializeField] Text m_setText;
+    [SerializeField] InputField m_name;
+    [SerializeField] GameObject m_entryButton;
     float m_getScore;
     List<NCMBObject> m_ncmbList;
 
     public void SetUp(float score)
     {
+        m_name.gameObject.SetActive(false);
+        m_entryButton.SetActive(false);
         GetRanking(score);
     }
 
@@ -29,10 +33,12 @@ public class RankingManager : MonoBehaviour
             else
             {
                 m_ncmbList = list;
-                if (m_ncmbList.Count < 7 || score != 0)
+
+                if (m_ncmbList.Count < 7 && score != 0 || 
+                    score > int.Parse(m_ncmbList[m_ncmbList.Count - 1]["Score"].ToString()))
                 {
-                    Debug.Log("ランクイン");
-                    //Save(m_getScore);
+                    m_name.gameObject.SetActive(true);
+                    m_entryButton.SetActive(true);
                 }
                 
                 SetCanvas();
@@ -56,11 +62,11 @@ public class RankingManager : MonoBehaviour
         m_setText.text = builder.ToString();
     }
 
-    public void Save(float score)
+    public void Save()
     {
         NCMBObject ncmb = new NCMBObject("HighScore");
-        ncmb["Name"] = "v";
-        ncmb["Score"] = score;
+        ncmb["Name"] = m_name;
+        ncmb["Score"] = m_getScore;
 
         ncmb.SaveAsync((NCMBException e) =>
         {
@@ -70,7 +76,9 @@ public class RankingManager : MonoBehaviour
             }
             else
             {
-
+                Debug.Log("a");
+                m_name.gameObject.SetActive(false);
+                m_entryButton.SetActive(false);
             }
         });
 

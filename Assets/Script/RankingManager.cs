@@ -20,7 +20,7 @@ public class RankingManager : MonoBehaviour
         m_getScore = score;
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
         query.OrderByDescending("Score");
-        query.Limit = 5;
+        query.Limit = 7;
 
         query.FindAsync((List<NCMBObject> list, NCMBException e) =>
         {
@@ -29,10 +29,10 @@ public class RankingManager : MonoBehaviour
             else
             {
                 m_ncmbList = list;
-                if (m_ncmbList.Count < 5 || score != 0)
+                if (m_ncmbList.Count < 7 || score != 0)
                 {
                     Debug.Log("ランクイン");
-                    Save(m_getScore);
+                    //Save(m_getScore);
                 }
                 
                 SetCanvas();

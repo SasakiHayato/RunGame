@@ -126,7 +126,7 @@ public class BulletClass : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            ScoreClass score = FindObjectOfType<ScoreClass>();
+            UiManager score = FindObjectOfType<UiManager>();
             score.ScoreUp();
 
             DesBullet();

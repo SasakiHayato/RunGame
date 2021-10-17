@@ -25,7 +25,6 @@ public class ShieldMeterClass : MonoBehaviour
         {
             m_imageObs[i] = this.gameObject.transform.GetChild(i).gameObject;
             m_imageObs[i].SetActive(false);
-            Debug.Log(m_imageObs[i]);
         }
     }
 

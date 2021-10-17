@@ -66,7 +66,6 @@ public class PlayerClass : PlayerManager
         }
 
         m_rigidbody.velocity = new Vector2(m_speed * h, m_rigidbody.velocity.y);
-        Debug.Log(m_shieldmeter.m_meterTime);
     }
 
     private void Jump()

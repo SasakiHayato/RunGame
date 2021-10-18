@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    static float m_score;
+    float m_score;
 
-    static GameObject m_rezult;
-    static GameObject m_scoreOb;
-    static GameObject m_ranking;
+    GameObject m_rezult;
+    GameObject m_scoreOb;
+    GameObject m_ranking;
 
     [SerializeField] Text m_resultScoreText;
     Text m_scoreText;

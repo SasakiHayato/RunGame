@@ -9,14 +9,19 @@ public class RankingManager : MonoBehaviour
     [SerializeField] Text m_setText;
     [SerializeField] InputField m_name;
     [SerializeField] GameObject m_entryButton;
-    float m_getScore;
+    [SerializeField] GameObject m_retryButton;
+    [SerializeField] GameObject m_titleButton;
+    
     List<NCMBObject> m_ncmbList;
+    float m_getScore;
 
     public void SetUp(float score)
     {
-        if (true) return;
         m_name.gameObject.SetActive(false);
         m_entryButton.SetActive(false);
+        m_retryButton.SetActive(false);
+        m_titleButton.SetActive(false);
+        
         GetRanking(score);
     }
 
@@ -36,10 +41,15 @@ public class RankingManager : MonoBehaviour
                 m_ncmbList = list;
 
                 if (m_ncmbList.Count < 7 && score != 0 || 
-                    score > int.Parse(m_ncmbList[m_ncmbList.Count - 1]["Score"].ToString()))
+                    score > float.Parse(m_ncmbList[m_ncmbList.Count - 1]["Score"].ToString()))
                 {
                     m_name.gameObject.SetActive(true);
                     m_entryButton.SetActive(true);
+                }
+                else
+                {
+                    m_retryButton.SetActive(true);
+                    m_titleButton.SetActive(true);
                 }
                 
                 SetCanvas();
@@ -65,7 +75,6 @@ public class RankingManager : MonoBehaviour
 
     public void Save()
     {
-        if (true) return;
         NCMBObject ncmb = new NCMBObject("HighScore");
         ncmb["Name"] = m_name.text;
         ncmb["Score"] = m_getScore;
@@ -78,12 +87,12 @@ public class RankingManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("a");
                 m_name.gameObject.SetActive(false);
                 m_entryButton.SetActive(false);
                 GetRanking(0);
+                m_retryButton.SetActive(true);
+                m_titleButton.SetActive(true);
             }
         });
-
     }
 }

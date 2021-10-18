@@ -486,6 +486,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442524427}
   m_CullTransparentMesh: 0
+--- !u!1 &476215431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8659437113373099877, guid: bc48e5513db10b94ab1e6ef7d2373658,
+    type: 3}
+  m_PrefabInstance: {fileID: 3191950265867293037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &504972091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8659437113459517005, guid: bc48e5513db10b94ab1e6ef7d2373658,
+    type: 3}
+  m_PrefabInstance: {fileID: 3191950265867293037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510328979 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3191950266103550462, guid: bc48e5513db10b94ab1e6ef7d2373658,
@@ -513,6 +525,8 @@ MonoBehaviour:
   m_setText: {fileID: 1313844357}
   m_name: {fileID: 1957418128}
   m_entryButton: {fileID: 938734170}
+  m_retryButton: {fileID: 504972091}
+  m_titleButton: {fileID: 476215431}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +2002,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1275296595}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3191950265103180492, guid: bc48e5513db10b94ab1e6ef7d2373658, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc48e5513db10b94ab1e6ef7d2373658, type: 3}
 --- !u!1001 &5394752397796120761
 PrefabInstance:

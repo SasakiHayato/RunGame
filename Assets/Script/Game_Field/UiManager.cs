@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiManager : MonoBehaviour, IManager
+public class UiManager : MonoBehaviour
 {
     static float m_score;
 
@@ -17,11 +17,11 @@ public class UiManager : MonoBehaviour, IManager
     
     public float m_rezultScore { get => m_score; }
 
-    public void SetUp()
+    void Start()
     {
         m_rezult = GameObject.Find("Retry");
         m_rezult.SetActive(false);
-        
+
         m_scoreOb = GameObject.Find("Score");
         GameObject child = m_scoreOb.transform.GetChild(0).gameObject;
         m_scoreText = child.GetComponent<Text>();
@@ -31,8 +31,7 @@ public class UiManager : MonoBehaviour, IManager
         m_rankingText = rChild.GetComponent<Text>();
         m_ranking.SetActive(false);
     }
-
-    public void ManageUpDate()
+    void Update()
     {
         if (!GameManager.Instance.Cureated()) return;
         m_score += GameManager.Instance.Timer() * 100;

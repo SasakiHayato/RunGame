@@ -21,29 +21,29 @@ public class PlayerClass : PlayerManager
         Move();
         GroundCheck();
 
-        if (Input.GetButtonDown("JoystickJump") || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
         
         if (!m_isBullet)
         {
-            if (Input.GetButtonDown("JoystickShot") || Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 SetBullet();
             }
         }
         
-        if (Input.GetButton("JoystickShot") || Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             m_animator.Play("HouseShotReady");
         }
-        if (Input.GetButtonUp("JoystickShot") || Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             m_animator.Play("HouseShot");
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("JoystickShield") && !m_isShield && m_shieldmeter.m_setShield)
+        if (Input.GetMouseButtonDown(1)&& !m_isShield && m_shieldmeter.m_setShield)
         {
             SetShield();
             m_shieldmeter.m_setShield = false;
@@ -71,8 +71,8 @@ public class PlayerClass : PlayerManager
     private void Jump()
     {
         if (m_cureatedJumpCount == 0) return;
-        
-        m_rigidbody.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
+
+        m_rigidbody.velocity = transform.up * m_jumpPower;
         m_cureatedJumpCount--;
     }
 }

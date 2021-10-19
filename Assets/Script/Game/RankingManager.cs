@@ -17,6 +17,7 @@ public class RankingManager : MonoBehaviour
 
     public void SetUp(float score)
     {
+        if (true) return;
         m_name.gameObject.SetActive(false);
         m_entryButton.SetActive(false);
         m_retryButton.SetActive(false);
@@ -75,6 +76,7 @@ public class RankingManager : MonoBehaviour
 
     public void Save()
     {
+        if (true) return;
         NCMBObject ncmb = new NCMBObject("HighScore");
         ncmb["Name"] = m_name.text;
         ncmb["Score"] = m_getScore;

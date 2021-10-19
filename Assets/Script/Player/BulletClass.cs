@@ -29,7 +29,7 @@ public class BulletClass : MonoBehaviour
     void Update()
     {
         if (m_shotCheck) return;
-        if (Input.GetButton("JoystickShot") || Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             transform.position = new Vector2(m_playerPos.position.x - 0.8f, m_playerPos.position.y + 0.5f);
             m_angleSin += Time.deltaTime;
@@ -40,7 +40,7 @@ public class BulletClass : MonoBehaviour
             DrawLine(rad);
         }
 
-        if (Input.GetButtonUp("JoystickShot") || Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             Vector2 angleVec = SetAngle(m_angleSin) * 15;
             Shot(angleVec);

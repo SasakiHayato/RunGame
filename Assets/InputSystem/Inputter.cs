@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 public enum InputType
 {
     
@@ -8,17 +9,17 @@ public enum InputType
 /// InputSystemの管理クラス
 /// </summary>
 
-public class Inputter : SingletonAttribute<Inputter>
+public class Inputter : SingletonAttribute<Inputter>, ISingleton
 {
     public InputData Inputs { get; private set; }
 
-    public override void SetUp()
+    public void SetUp()
     {
-        base.SetUp();
-
         Inputs = new InputData();
         Inputs.Enable();
     }
+
+    public object Type() => this;
 
     // 今後、必要な時に追加
     public object GetValue(InputType type)

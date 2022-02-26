@@ -10,7 +10,7 @@ public enum GameState
     Pause,
 }
 
-public class GameManager : SingletonAttribute<GameManager>
+public class GameManager 
 {
     
 }

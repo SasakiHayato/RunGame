@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     void Start()
     {
-        //Inputter.Access.Inputs.Player.Fire.started += Jump;
+        Inputter inputter = (Inputter)Inputter.GetInstance.Access();
+        inputter.Inputs.Player.Fire.started += context => Jump();
     }
 
     void Update()
@@ -16,6 +17,6 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-
+        Debug.Log("aaaaaaaaa");
     }
 }

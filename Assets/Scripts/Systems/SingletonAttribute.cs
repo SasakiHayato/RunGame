@@ -4,35 +4,32 @@
 /// </summary>
 /// <typeparam name="Sigleton">派生クラス</typeparam>
 
-public class SingletonAttribute<Sigleton> where Sigleton : class
+public interface ISingleton
 {
-    bool _isSetUp = false;
+    object Type();
+    void SetUp();
+}
 
-    Sigleton _sigleton;
-    public static Sigleton Access
+public class SingletonAttribute<Singleton> where Singleton : ISingleton
+{
+    Singleton _sigleton = default; 
+
+    private static SingletonAttribute<Singleton> _instance = null;
+    public static void SetInstance(Singleton singleton)
     {
-        get
+        if (_instance == null)
         {
-            if (Instance._isSetUp) return Instance._sigleton;
-            else return null;
+            _instance = new SingletonAttribute<Singleton>();
+            _instance._sigleton = singleton;
+            _instance._sigleton.SetUp();
         }
     }
 
-    private static SingletonAttribute<Sigleton> _instance = null;
-    public static SingletonAttribute<Sigleton> Instance
+    public static SingletonAttribute<Singleton> GetInstance => _instance;
+
+    public object Access() => _sigleton.Type();
+    public void Destory()
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new SingletonAttribute<Sigleton>();
-                _instance.SetUp();
-            }
-
-            return _instance;
-        }
+        _instance.Destory();
     }
-
-    public virtual void SetUp() => _isSetUp = true;
-    public void Destory() => _instance.Destory();
 }

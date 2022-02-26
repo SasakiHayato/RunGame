@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-
+﻿
 public enum InputType
 {
     
@@ -15,8 +14,16 @@ public class Inputter : SingletonAttribute<Inputter>
 
     public override void SetUp()
     {
+        base.SetUp();
+
         Inputs = new InputData();
         Inputs.Enable();
+    }
+
+    public override void Destory()
+    {
+        base.Destory();
+        
     }
 
     // 今後、必要な時に追加

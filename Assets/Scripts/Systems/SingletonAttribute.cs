@@ -10,16 +10,16 @@ public class SingletonAttribute<Singleton> where Singleton : class
     public static Singleton Access => s_instance._sigleton;
 
     private static SingletonAttribute<Singleton> s_instance = null;
-    public static void SetInstance(Singleton singleton)
+    public static void SetInstance(Singleton singleton, SingletonAttribute<Singleton> attribute)
     {
         if (s_instance == null)
         {
             s_instance = new SingletonAttribute<Singleton>();
             s_instance._sigleton = singleton;
-            s_instance.SetUp();
+            attribute.SetUp();
         }
     }
 
     public virtual void SetUp() { }
-    public void Destory() => s_instance.Destory();
+    public virtual void Destory() { s_instance = null; }
 }

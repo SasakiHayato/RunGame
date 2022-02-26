@@ -2,34 +2,24 @@
 /// <summary>
 /// Singletonにするクラスに継承するクラス
 /// </summary>
-/// <typeparam name="Sigleton">派生クラス</typeparam>
+/// <typeparam name="Singleton">派生クラス</typeparam>
 
-public interface ISingleton
+public class SingletonAttribute<Singleton> where Singleton : class
 {
-    object Type();
-    void SetUp();
-}
+    Singleton _sigleton = default;
+    public static Singleton Access => s_instance._sigleton;
 
-public class SingletonAttribute<Singleton> where Singleton : ISingleton
-{
-    Singleton _sigleton = default; 
-
-    private static SingletonAttribute<Singleton> _instance = null;
+    private static SingletonAttribute<Singleton> s_instance = null;
     public static void SetInstance(Singleton singleton)
     {
-        if (_instance == null)
+        if (s_instance == null)
         {
-            _instance = new SingletonAttribute<Singleton>();
-            _instance._sigleton = singleton;
-            _instance._sigleton.SetUp();
+            s_instance = new SingletonAttribute<Singleton>();
+            s_instance._sigleton = singleton;
+            s_instance.SetUp();
         }
     }
 
-    public static SingletonAttribute<Singleton> GetInstance => _instance;
-
-    public object Access() => _sigleton.Type();
-    public void Destory()
-    {
-        _instance.Destory();
-    }
+    public virtual void SetUp() { }
+    public void Destory() => s_instance.Destory();
 }

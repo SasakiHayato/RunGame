@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// ゲーム全体を管理するクラス
 /// </summary>
 
@@ -10,7 +12,10 @@ public enum GameState
     Pause,
 }
 
-public class GameManager 
+public class GameManager : SingletonAttribute<GameManager>
 {
-    
+    public override void SetUp()
+    {
+
+    }
 }

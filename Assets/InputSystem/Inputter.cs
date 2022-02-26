@@ -9,17 +9,15 @@ public enum InputType
 /// InputSystemの管理クラス
 /// </summary>
 
-public class Inputter : SingletonAttribute<Inputter>, ISingleton
+public class Inputter : SingletonAttribute<Inputter>
 {
     public InputData Inputs { get; private set; }
 
-    public void SetUp()
+    public override void SetUp()
     {
         Inputs = new InputData();
         Inputs.Enable();
     }
-
-    public object Type() => this;
 
     // 今後、必要な時に追加
     public object GetValue(InputType type)

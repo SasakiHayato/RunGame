@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GamePresenter : MonoBehaviour
 {
@@ -8,5 +6,8 @@ public class GamePresenter : MonoBehaviour
     {
         Inputter inputter = new Inputter();
         Inputter.SetInstance(inputter);
+
+        GameManager gameManager = new GameManager();
+        GameManager.SetInstance(gameManager);
     }
 }

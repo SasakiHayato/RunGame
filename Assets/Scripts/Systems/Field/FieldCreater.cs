@@ -7,6 +7,7 @@
 public class FieldCreater : MonoBehaviour
 {
     [SerializeField] ObstacleDataBase _obstacleData;
+    [SerializeField] float _firstCreateTime;
     [SerializeField] Vector2 _offSet;
 
     bool _isSet = false;
@@ -34,12 +35,13 @@ public class FieldCreater : MonoBehaviour
     {
         GameObject obj = Instantiate(data.Prefabs);
         obj.transform.position = _offSet;
+        obj.GetComponent<ObstacleSetter>().SetUp();
     }
 
     public void SetUp()
     {   
         _isSet = true;
-        _createTimer = Random.Range(1.0f, 3.0f);
+        _createTimer = _firstCreateTime;
     }
 
     public void End()

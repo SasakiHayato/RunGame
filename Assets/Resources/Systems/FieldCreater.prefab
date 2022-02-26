@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obstacleData: {fileID: 11400000, guid: 026500a4f0231554ab6067782c622c9c, type: 2}
+  _firstCreateTime: 1
   _offSet: {x: 7.5, y: 1.5}

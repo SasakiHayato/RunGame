@@ -29,7 +29,6 @@ public class SoundSetter : MonoBehaviour
 
     public void CallBack()
     {
-        Debug.Log("aaa");
         SoundMaster.Request(null, _requestID, _groupID);
     }
 }

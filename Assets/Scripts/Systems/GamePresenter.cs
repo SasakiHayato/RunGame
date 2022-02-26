@@ -7,7 +7,7 @@
 public class GamePresenter : MonoBehaviour
 {
     [SerializeField] GameState _setGameState;
-  
+
     void Awake()
     {
         Inputter inputter = new Inputter();
@@ -15,9 +15,12 @@ public class GamePresenter : MonoBehaviour
 
         GameManager gameManager = new GameManager();
         GameManager.SetInstance(gameManager, gameManager);
-
+        
         UIManager uIManager = new UIManager();
         UIManager.SetInstance(uIManager, uIManager);
+
+        FieldManager fieldManager = new FieldManager();
+        FieldManager.SetInstance(fieldManager, fieldManager);
     }
 
     void Start()

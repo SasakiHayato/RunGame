@@ -6,11 +6,16 @@ public class Player : MonoBehaviour
 {
     void Start()
     {
-        
+        //Inputter.Access.Inputs.Player.Fire.started += Jump;
     }
 
     void Update()
     {
         
+    }
+
+    void Jump()
+    {
+
     }
 }
